@@ -1,0 +1,12 @@
+
+	# Aplicações de filas (Algoritmos)
+
+	- Jogos
+	- Pacote de redes
+	- Buffer (streaming de video, teclado)
+	- BFS (Grafos): Encontrar o menor trajeto em um lab.
+	- Controle de threads
+	- Sistemas operacionais
+	- Filas de prioridade
+	- Áudio e processamento de sinais (spotify, deezer)
+
