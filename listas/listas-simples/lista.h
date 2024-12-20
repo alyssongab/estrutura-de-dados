@@ -16,4 +16,6 @@ void LinkedList_add_last_slow(LinkedList *L, int val);
 
 void LinkedList_add_last(LinkedList *L, int val);
 
+void LinkedList_remove(LinkedList *L, int val);
+
 #endif

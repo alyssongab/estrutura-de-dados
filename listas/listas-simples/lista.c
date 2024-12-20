@@ -106,3 +106,43 @@ void LinkedList_add_last(LinkedList *L, int val){
         L->end = L->end->next;
     }
 }
+
+void LinkedList_remove(LinkedList *L, int val){
+    if(!LinkedList_is_empty(L)){
+        // caso 1 - elemento está na cabeça da lista
+        if(L->begin->val == val){
+            SNode *pos = L->begin; // ponteiro que aponta para o nó da cabeça
+
+            // Verifica se a lista tem somente 1 elemento
+            if(L->begin == L->end) {
+                L->end = NULL;
+            }
+
+            L->begin = L->begin->next;
+            free(pos); // libera o ponteiro pos, removendo assim o nó desejado
+        }
+        // caso 3 - elemento no final da lista
+        else if(L->end->val == val){
+            SNode *tail = L->end;
+            SNode *prev = L->begin;
+        }
+        // caso 2 - elemento está no meio da lista
+        else {
+            SNode *prev = L->begin; // aponta para o nó da cabeça
+            SNode *pos = L->begin->next;// aponta para o segundo nó
+
+            while(pos != NULL && pos->val != val){
+                // ambos apontam para o próximo nó (move os ponteiros)
+                prev = pos;
+                pos = pos->next;
+            }
+
+            // um nó com valor val foi encontrado e é apontado pelo ponteiro "pos"
+            if(pos != NULL) {
+                // corrigindo o encadeamento
+                prev->next = pos->next;
+                free(pos);
+            }
+        }
+    }
+}
