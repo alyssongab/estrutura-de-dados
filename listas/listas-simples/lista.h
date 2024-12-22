@@ -18,4 +18,6 @@ void LinkedList_add_last(LinkedList *L, int val);
 
 void LinkedList_remove(LinkedList *L, int val);
 
+void LinkedList_remove_better(LinkedList *L, int val);
+
 #endif

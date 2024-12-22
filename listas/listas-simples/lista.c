@@ -71,6 +71,15 @@ void LinkedList_print(const LinkedList *L){
         p = p->next;
     }
     printf("NULL\n");
+
+    if(L->end == NULL){
+        printf("L->end = NULL\n");
+    }
+    else{
+        printf("L->end = %d\n", L->end->val);
+    }
+
+    puts("");
 }
 
 // adiciona um elemento na cauda da lista (forma mais lenta)
@@ -121,11 +130,6 @@ void LinkedList_remove(LinkedList *L, int val){
             L->begin = L->begin->next;
             free(pos); // libera o ponteiro pos, removendo assim o nó desejado
         }
-        // caso 3 - elemento no final da lista
-        else if(L->end->val == val){
-            SNode *tail = L->end;
-            SNode *prev = L->begin;
-        }
         // caso 2 - elemento está no meio da lista
         else {
             SNode *prev = L->begin; // aponta para o nó da cabeça
@@ -141,8 +145,43 @@ void LinkedList_remove(LinkedList *L, int val){
             if(pos != NULL) {
                 // corrigindo o encadeamento
                 prev->next = pos->next;
+                // caso 3 - o elemento está na última posição
+                if(pos->next == NULL){
+                    L->end = prev; // corrigindo o tail para apontar para o então último elemento
+                }
+
                 free(pos);
             }
+        }
+        puts("Elemento não encontrado");
+    }
+}
+
+void LinkedList_remove_better(LinkedList *L, int val){
+    if(!LinkedList_is_empty(L)){
+        SNode *prev = NULL;
+        SNode *pos = L->begin;
+
+        while(pos != NULL && pos->val == val){
+            pos = pos->next;
+            prev = pos;
+        }
+
+        // se achou um nó com valor val
+        if(pos != NULL){
+            // tail
+            if(L->end = pos){
+                L->end = prev;
+            }
+            // head
+            if(L->begin == pos){
+                L->begin = pos->next;
+            }
+            else{
+                prev->next = pos->next;
+            }
+            
+            free(pos);
         }
     }
 }
