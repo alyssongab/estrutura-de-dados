@@ -37,13 +37,20 @@ SNode *SNode_create(int val){
     return snode;
 }
 
-// adiciona elemento na cabeça da lista
-// void LinkedList_add_first(LinkedList *L, int val){
-//     SNode *p = SNode_create(val);
-//     p->next = L->begin;
-//     L->begin = p;
+void LinkedList_destroy(LinkedList **L_ref){
+    LinkedList *L = *L_ref;
 
-// }
+    SNode *p = L->begin;
+    SNode *aux = NULL;
+
+    while(p != NULL){
+        aux = p;
+        p = p->next;
+        free(aux);
+    }
+    free(L);
+    *L_ref = NULL;
+}
 
 void LinkedList_add_first(LinkedList *L, int val){
     SNode *p = SNode_create(val); // novo nó a ser inserido

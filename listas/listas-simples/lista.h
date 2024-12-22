@@ -8,6 +8,8 @@ SNode *SNode_create(int val);
 
 LinkedList *LinkedList_create();
 
+void LinkedList_destroy(LinkedList **L_ref);
+
 void LinkedList_add_first(LinkedList *L, int val);
 
 void LinkedList_print(const LinkedList *L);
